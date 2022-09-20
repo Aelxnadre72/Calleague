@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { Button, View, StyleSheet, Dimensions, TouchableOpacity, Image, PixelRatio, StatusBar } from "react-native";
-import { Constants } from 'expo';
 import { Text } from "../components/Themed";
 import { Employee, useFetchEmployees } from "../hooks/useFetchEmployees";
 import { NavigationContainer } from '@react-navigation/native';
@@ -24,9 +23,9 @@ export const StartScreen = ({ navigation }: any) => {
             }
             >
               <Image
-                style={{resizeMode:'cover',
-                        height:Dimensions.get('window').height*0.08,
-                        width: Dimensions.get('window').width*0.13}}
+                style={{resizeMode:'contain',
+                        height:Dimensions.get('window').height*0.1,
+                        width: Dimensions.get('window').width*0.15}}
                        
                 source={require('../img/leaderboard.png')}
               />
@@ -38,8 +37,8 @@ export const StartScreen = ({ navigation }: any) => {
             }
             >
               <Image
-                style={{resizeMode:'cover',
-                        height:Dimensions.get('window').height*0.07,
+                style={{resizeMode:'contain',
+                        height:Dimensions.get('window').height*0.08,
                         width: Dimensions.get('window').width*0.13}}
                        
                 source={require('../img/settings.png')}
@@ -55,9 +54,9 @@ export const StartScreen = ({ navigation }: any) => {
             }
             >
               <Image
-                style={{resizeMode:'cover',
-                        height:Dimensions.get('window').height*0.12,
-                        width: Dimensions.get('window').width*0.5}}
+                style={{resizeMode: "contain",
+                        height:Dimensions.get('window').height*0.25,
+                        width: Dimensions.get('window').width*0.75}}
                        
                 source={require('../img/itverket.png')}
               />
@@ -100,7 +99,7 @@ export default StartScreen;
 const styles = StyleSheet.create({
   container3: {
     width: Dimensions.get('window').width * 1,
-    height: Dimensions.get('window').height * 0.3,
+    height: Dimensions.get('window').height * 0.35,
     overflow: 'hidden',
     backgroundColor:"#d4f2fc",
     alignItems: "center",
@@ -128,6 +127,7 @@ const styles = StyleSheet.create({
     width: Dimensions.get('window').width * 1,
     height: Dimensions.get('window').height * 0.2,
     marginTop: Dimensions.get('window').height*0,
+    
     overflow: 'hidden',
     backgroundColor:"#d4f2fc",
     alignItems: "flex-start",
@@ -138,9 +138,9 @@ const styles = StyleSheet.create({
   },
 
   buttonContainer: {
-    width: Dimensions.get('window').width * 0.7,
-    height: Dimensions.get('window').height * 0.13,
-    marginTop: Dimensions.get('window').height*0.09,
+    width: Dimensions.get('window').width * 0.65,
+    height: Dimensions.get('window').height * 0.10,
+    marginTop: Dimensions.get('window').height*0.22,
     backgroundColor:"#F68221",
     alignItems: "center",
     justifyContent: "center",
@@ -148,7 +148,7 @@ const styles = StyleSheet.create({
     
   },
   quest_button_text: {
-    fontSize: 35, // may change font size to dynamic
+    fontSize: 30, // may change font size to dynamic
     fontWeight: '400',
     color: "black",
   },
@@ -161,9 +161,11 @@ const styles = StyleSheet.create({
   /* Here style the background of your button */
   quest_button: {
     backgroundColor: "#3BC8EF",
-    paddingHorizontal: 30,
-    paddingVertical: 15,
-    borderRadius: 20
+    paddingHorizontal: 20,
+    paddingVertical: Dimensions.get('window').height*0.02,
+
+    borderRadius: 30,
+    marginTop: Dimensions.get('window').height*0.02
   },
 
   play_button: {
@@ -172,15 +174,15 @@ const styles = StyleSheet.create({
   },
     
   leaderboard_button: {
-      paddingHorizontal: Dimensions.get('window').width*0.1,
-      paddingVertical: Dimensions.get('window').height*0.02,
+      paddingHorizontal: Dimensions.get('window').width*0.05,
+      paddingVertical: Dimensions.get('window').height*0.01,
 
       
   },
 
   settings_button: {
-    paddingHorizontal: Dimensions.get('window').width*0.1,
-    paddingVertical: Dimensions.get('window').height*0.02,
+    paddingHorizontal: Dimensions.get('window').width*0.06,
+    paddingVertical: Dimensions.get('window').height*0.008,
 
     
   },

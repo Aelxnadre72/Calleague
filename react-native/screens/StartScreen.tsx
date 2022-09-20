@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import { Button, View, StyleSheet, Dimensions, TouchableOpacity, Image, PixelRatio } from "react-native";
-
+import { Button, View, StyleSheet, Dimensions, TouchableOpacity, Image, PixelRatio, StatusBar } from "react-native";
+import { Constants } from 'expo';
 import { Text } from "../components/Themed";
 import { Employee, useFetchEmployees } from "../hooks/useFetchEmployees";
 import { NavigationContainer } from '@react-navigation/native';
@@ -56,8 +56,8 @@ export const StartScreen = ({ navigation }: any) => {
             >
               <Image
                 style={{resizeMode:'cover',
-                        height:Dimensions.get('window').height*0.15,
-                        width: Dimensions.get('window').width*0.65}}
+                        height:Dimensions.get('window').height*0.12,
+                        width: Dimensions.get('window').width*0.5}}
                        
                 source={require('../img/itverket.png')}
               />
@@ -132,7 +132,9 @@ const styles = StyleSheet.create({
     backgroundColor:"#d4f2fc",
     alignItems: "flex-start",
     justifyContent: "center",
-    flexDirection:"row"
+    flexDirection:"row",
+    paddingHorizontal: Dimensions.get('window').width*0.1,
+
   },
 
   buttonContainer: {
@@ -170,20 +172,22 @@ const styles = StyleSheet.create({
   },
     
   leaderboard_button: {
-      paddingHorizontal: Dimensions.get('window').width*0.04,
+      paddingHorizontal: Dimensions.get('window').width*0.1,
       paddingVertical: Dimensions.get('window').height*0.02,
+
       
   },
 
   settings_button: {
-    paddingHorizontal: Dimensions.get('window').width*0.04,
+    paddingHorizontal: Dimensions.get('window').width*0.1,
     paddingVertical: Dimensions.get('window').height*0.02,
+
     
   },
   
 
   it_button: {
-    addingHorizontal: Dimensions.get('window').width*0.04,
+    addingHorizontal: Dimensions.get('window').width*0.06,
     paddingVertical: Dimensions.get('window').height*0.025,
     
   },

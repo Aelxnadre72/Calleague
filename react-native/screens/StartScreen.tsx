@@ -56,8 +56,8 @@ export const StartScreen = ({ navigation }: any) => {
             >
               <Image
                 style={{resizeMode:'cover',
-                        height:Dimensions.get('window').height*0.15,
-                        width: Dimensions.get('window').width*0.65}}
+                        height:Dimensions.get('window').height*0.12,
+                        width: Dimensions.get('window').width*0.5}}
                        
                 source={require('../img/itverket.png')}
               />
@@ -172,17 +172,15 @@ const styles = StyleSheet.create({
   },
     
   leaderboard_button: {
-      paddingHorizontal: Dimensions.get('window').width*0.06,
+      paddingHorizontal: Dimensions.get('window').width*0.1,
       paddingVertical: Dimensions.get('window').height*0.02,
-      marginTop: StatusBar.currentHeight,
 
       
   },
 
   settings_button: {
-    paddingHorizontal: Dimensions.get('window').width*0.06,
+    paddingHorizontal: Dimensions.get('window').width*0.1,
     paddingVertical: Dimensions.get('window').height*0.02,
-    marginTop: StatusBar.currentHeight,
 
     
   },

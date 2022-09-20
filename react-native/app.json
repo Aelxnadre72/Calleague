@@ -18,10 +18,10 @@
     "assetBundlePatterns": ["**/*"],
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "no.itverket.itdagene.reactnative"
+      "bundleIdentifier": "itCASE.gruppeseks"
     },
     "android": {
-      "package": "no.itverket.itdagene.reactnative",
+      "package": "itCASE.gruppeseks",
       "adaptiveIcon": {
         "foregroundImage": "./assets/images/adaptive-icon.png",
         "backgroundColor": "#ffffff"

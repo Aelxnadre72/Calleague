@@ -19,7 +19,7 @@ export default function App() {
   } else {
     return (
       <NavigationContainer>
-        <Stack.Navigator initialRouteName="Start">
+        <Stack.Navigator screenOptions={{headerShown: false}} initialRouteName="Start">
           <Stack.Screen name = "Start" component={StartScreen} />
           <Stack.Screen name = "Play" component={PlayScreen} />
           

@@ -7,7 +7,7 @@ import { RootTabScreenProps } from "../types";
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
-export const PlayScreen = ({ navigation }) => {
+export const PlayScreen = ({ navigation }:any) => {
   const employeeResult = useFetchEmployees();
 
   const gotoDetails = (employee: Employee) => () =>

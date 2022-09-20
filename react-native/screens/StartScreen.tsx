@@ -7,9 +7,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 
-
-
-export const StartScreen = ({ navigation }) => {
+export const StartScreen = ({ navigation }: any) => {
   const employeeResult = useFetchEmployees();
 
   

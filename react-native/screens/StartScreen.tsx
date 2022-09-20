@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import { Button, View, StyleSheet, Dimensions, TouchableOpacity, Image, PixelRatio } from "react-native";
-
+import { Button, View, StyleSheet, Dimensions, TouchableOpacity, Image, PixelRatio, StatusBar } from "react-native";
+import { Constants } from 'expo';
 import { Text } from "../components/Themed";
 import { Employee, useFetchEmployees } from "../hooks/useFetchEmployees";
 import { NavigationContainer } from '@react-navigation/native';
@@ -172,12 +172,16 @@ const styles = StyleSheet.create({
   leaderboard_button: {
       paddingHorizontal: Dimensions.get('window').width*0.04,
       paddingVertical: Dimensions.get('window').height*0.02,
+      marginTop: StatusBar.currentHeight,
+
       
   },
 
   settings_button: {
     paddingHorizontal: Dimensions.get('window').width*0.04,
     paddingVertical: Dimensions.get('window').height*0.02,
+    marginTop: StatusBar.currentHeight,
+
     
   },
   

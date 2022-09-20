@@ -132,7 +132,9 @@ const styles = StyleSheet.create({
     backgroundColor:"#d4f2fc",
     alignItems: "flex-start",
     justifyContent: "center",
-    flexDirection:"row"
+    flexDirection:"row",
+    paddingHorizontal: Dimensions.get('window').width*0.1,
+
   },
 
   buttonContainer: {
@@ -170,7 +172,7 @@ const styles = StyleSheet.create({
   },
     
   leaderboard_button: {
-      paddingHorizontal: Dimensions.get('window').width*0.04,
+      paddingHorizontal: Dimensions.get('window').width*0.06,
       paddingVertical: Dimensions.get('window').height*0.02,
       marginTop: StatusBar.currentHeight,
 
@@ -178,7 +180,7 @@ const styles = StyleSheet.create({
   },
 
   settings_button: {
-    paddingHorizontal: Dimensions.get('window').width*0.04,
+    paddingHorizontal: Dimensions.get('window').width*0.06,
     paddingVertical: Dimensions.get('window').height*0.02,
     marginTop: StatusBar.currentHeight,
 
@@ -187,7 +189,7 @@ const styles = StyleSheet.create({
   
 
   it_button: {
-    addingHorizontal: Dimensions.get('window').width*0.04,
+    addingHorizontal: Dimensions.get('window').width*0.06,
     paddingVertical: Dimensions.get('window').height*0.025,
     
   },

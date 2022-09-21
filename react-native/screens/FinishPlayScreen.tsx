@@ -70,7 +70,7 @@ export const FinishPlayScreen = (props:any ) => {
                 />
             </TouchableOpacity>
         </View>
-      <View style={{flex: 1.5, backgroundColor: '#d4f2fc', alignItems: 'center', justifyContent: 'flex.start'}}>
+      <View style={{flex: 1.5, backgroundColor: '#d4f2fc', alignItems: 'center', justifyContent: 'flex-start'}}>
         <Image
               style={{resizeMode: "contain",
                       height:Dimensions.get('window').height*0.25,

@@ -47,6 +47,11 @@ export const PlayScreen = ({ navigation }:any) => {
   // change box size and make grid 
   
   const url = url_list.get(index);
+  const arg = {
+    name: name,
+    navigation: navigation,
+    url: url
+  }
   return (
     <View style={styles.container}>
       <View style={{flex: 1.4, backgroundColor: '#d4f2fc', alignItems: 'center', justifyContent: 'space-between', flexDirection: 'row'}}>
@@ -94,8 +99,8 @@ export const PlayScreen = ({ navigation }:any) => {
               source={{uri: url}}
             />  
       </View>
-      
-      <Keyboard name={name} ></Keyboard>
+        
+      <Keyboard arg={arg}></Keyboard>
     </View>
 
   );

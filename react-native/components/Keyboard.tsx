@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { StyleSheet, Text, Button, View, PixelRatio, TouchableOpacity, Pressable, Alert } from "react-native";
 import { Employee, useFetchEmployees } from "../hooks/useFetchEmployees";
 import { RootTabScreenProps } from "../types";
@@ -10,9 +10,24 @@ export const Keyboard = (props: { arg: any }) => {
     const [letter, setLetter] = useState("");
     const [alertVisibility, setAlertVisibility] = useState("none");
     const [round, setRound] = useState(0);
-    const [colorList, setcolorList] = useState([]);
     
+    let rows = 5;
+    let columns = 0;
+    let colorMapper: any[][] = [];
 
+    function kjor(){
+        if(typeof props.arg.name != "undefined"){
+            columns = props.arg.name.split(" ")[0].length;
+        }
+
+        for(let h = 0 ; h < rows; h++) {
+            let abc = [];
+            for(let y = 0; y < columns; y++) {
+                abc[y] = '#FFFFFF';
+            }
+            colorMapper[h] = abc;
+        }
+    };
 
     const KeysRowOne = () => {
         const alphabetOne = ["Q", "W", "E", "R", "T", "Y", "U", "I", "O", "P", "Å"];
@@ -78,7 +93,6 @@ export const Keyboard = (props: { arg: any }) => {
     };
 
     let allGuesses = "";
-    let rows = 5;
     const Boxes = () => {
         let firstName = "";
         let letterCount = 0;
@@ -88,6 +102,7 @@ export const Keyboard = (props: { arg: any }) => {
             firstName = props.arg.name.split(" ")[0].toUpperCase();
             letterCount = firstName.length;
             allGuesses = guess;
+            kjor();
             for(let j = 0; j < (letterCount*rows - guess.length); j++){
                 allGuesses += "-";
             }
@@ -100,7 +115,7 @@ export const Keyboard = (props: { arg: any }) => {
                     rowContent.push(<Text key={l + m} style={{
                         flex: 1,
                         fontSize: 25,
-                        backgroundColor: '#ffffff',
+                        backgroundColor: colorMapper[l][m],
                         marginHorizontal: '1.1%',
                         paddingVertical: '3.5%',
                         borderRadius: 6,
@@ -123,6 +138,7 @@ export const Keyboard = (props: { arg: any }) => {
     }
 
     function checkName() {
+        colorMapper[0][0] = '#GGGGGG';
         let resultList = [];
         let num = props.arg.name.split(" ")[0].length;
         if(allGuesses.replace(/-/g, "").length%num == 0 && allGuesses.replace(/-/g, "").length/num > round) {

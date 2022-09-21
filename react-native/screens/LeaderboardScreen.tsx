@@ -25,7 +25,7 @@ export const LeaderboardScreen = ({ navigation }:any) => {
             <TouchableOpacity
                 style={styles.settings_button}
                 onPress= {() =>
-                    navigation.navigate('Play')
+                    navigation.navigate('Start')
                 }
                 >
                 <Image
@@ -33,24 +33,28 @@ export const LeaderboardScreen = ({ navigation }:any) => {
                             height:Dimensions.get('window').height*0.08,
                             width: Dimensions.get('window').width*0.13}}
                         
-                    source={require('../img/settings.png')}
+                    source={require('../img/home.png')}
                 />
             </TouchableOpacity>
         </View>
-        <View style={{flex: 1, backgroundColor: 'green', justifyContent: 'center', alignItems: 'center'}}>
+        <View style={{flex: 1, backgroundColor: '#d4f2fc', justifyContent: 'center', alignItems: 'center'}}>
             <Text style={{fontSize:35}}>
                 Leaderboard
             </Text>
         </View>
         <View style={{flex: 5, backgroundColor: 'yellow', alignItems: 'center', justifyContent: 'flex-start'}}>
-            <View style={{height:Dimensions.get('window').height*0.5,
-                            width: Dimensions.get('window').width*0.4 
-                            background}}>
+            <View style={{height:Dimensions.get('window').height*0.3,
+                            width: Dimensions.get('window').width*0.25, 
+                            backgroundColor: '#d4f2fc', 
+                            alignItems: 'center', 
+                            justifyContent: 'center', 
+                            borderRadius: 50,
+                            }}>
                 <Image
                     style={{resizeMode: "contain",
-                            height:Dimensions.get('window').height*0.5,
-                            width: Dimensions.get('window').width*0.4, 
-                            borderRadius: 50}}
+                            height:Dimensions.get('window').height*0.4,
+                            width: Dimensions.get('window').width*0.3, 
+                            borderRadius: 75}}
                         
                     source={require('../img/the_rock.png')}
                 />

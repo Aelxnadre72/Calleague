@@ -4,7 +4,7 @@ import { Employee, useFetchEmployees } from "../hooks/useFetchEmployees";
 import { Keyboard } from '../components/Keyboard';
 
 
-export const SettingsScreen = ({ navigation }:any) => {
+export const InfoScreen = ({ navigation }:any) => {
     return (
       <View style={styles.flex_container}>
         <View style={{flex: 1, backgroundColor: 'blue', alignItems: 'center', justifyContent: 'space-between', flexDirection: 'row'}}>
@@ -33,7 +33,7 @@ export const SettingsScreen = ({ navigation }:any) => {
                             height:Dimensions.get('window').height*0.08,
                             width: Dimensions.get('window').width*0.13}}
                         
-                    source={require('../img/settings.png')}
+                    source={require('../img/home.png')}
                 />
             </TouchableOpacity>
         </View>
@@ -52,7 +52,7 @@ export const SettingsScreen = ({ navigation }:any) => {
   
     );
   };
-  export default SettingsScreen;
+  export default InfoScreen;
   
   const styles = StyleSheet.create({
     flex_container: {

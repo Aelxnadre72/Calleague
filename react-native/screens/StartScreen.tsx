@@ -33,15 +33,15 @@ export const StartScreen = ({ navigation }: any) => {
           <TouchableOpacity
               style={styles.settings_button}
               onPress= {() =>
-                navigation.navigate('Play')
+                navigation.navigate('Info')
             }
             >
               <Image
                 style={{resizeMode:'contain',
-                        height:Dimensions.get('window').height*0.08,
-                        width: Dimensions.get('window').width*0.13}}
+                        height:Dimensions.get('window').height*0.07,
+                        width: Dimensions.get('window').width*0.10}}
                        
-                source={require('../img/settings.png')}
+                source={require('../img/info.png')}
               />
           </TouchableOpacity>
       </View>
@@ -182,8 +182,8 @@ const styles = StyleSheet.create({
 
   settings_button: {
     paddingHorizontal: Dimensions.get('window').width*0.06,
-    paddingVertical: Dimensions.get('window').height*0.008,
-
+    paddingVertical: Dimensions.get('window').height*0.01,
+    marginTop: Dimensions.get('window').height*0.02
     
   },
   

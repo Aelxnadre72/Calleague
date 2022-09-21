@@ -1,4 +1,4 @@
-import { Text, View, Image, Dimensions, StyleSheet } from "react-native";
+import { Text, View, Image, Dimensions, StyleSheet, TouchableOpacity } from "react-native";
 import React, { useState } from "react";
 import { Employee, useFetchEmployees } from "../hooks/useFetchEmployees";
 import { Keyboard } from '../components/Keyboard';
@@ -28,7 +28,12 @@ function getRandomInt(max: any) {
 }
 
 
-export const QuestScreen = () => {
+
+
+
+export const QuestScreen = ({ navigation }:any) => {
+
+  const [pointer, setPointer] = useState([0,0])
   let index = 0;
   const name_list = new List<String>
   const url_list = new List<String>
@@ -39,10 +44,45 @@ export const QuestScreen = () => {
   })
   index = getRandomInt(name_list.size());
   const name = name_list.get(index);
+  // change box size and make grid 
+
   const url = url_list.get(index);
   return (
-    <View style={questScreenStyle.container}>
-      <View style={{flex: 1, backgroundColor: 'blue'}}></View>
+    <View style={styles.container}>
+      <View style={{flex: 1, backgroundColor: 'blue', alignItems: 'center', justifyContent: 'space-between', flexDirection: 'row'}}>
+            <TouchableOpacity
+                style={styles.leaderboard_button}
+                onPress= {() =>
+                    navigation.navigate('Start')
+                }
+                >
+                <Image
+                    style={{resizeMode:'contain',
+                            height:Dimensions.get('window').height*0.15,
+                            width: Dimensions.get('window').width*0.15,
+                            marginTop: Dimensions.get('window').height*0.02}}
+                        
+                    source={require('../img/leaderboard.png')}
+                />
+            </TouchableOpacity>
+            <TouchableOpacity
+                style={styles.settings_button}
+                onPress= {() =>
+                    navigation.navigate('Play')
+                }
+                >
+                <Image
+                    style={{resizeMode:'contain',
+                            height:Dimensions.get('window').height*0.1,
+                            width: Dimensions.get('window').width*0.13,
+                            marginTop: Dimensions.get('window').height*0.01}}
+
+                        
+                    source={require('../img/settings.png')}
+                />
+            </TouchableOpacity>
+      
+      </View>
       <View style={{flex: 3, backgroundColor: 'green'}}>
           <Image
             style={{resizeMode: "contain",
@@ -66,8 +106,21 @@ export const QuestScreen = () => {
 };
 export default QuestScreen;
 
-const questScreenStyle = StyleSheet.create({
+const styles = StyleSheet.create({
   container: {
     flex: 1,
+  },
+  leaderboard_button: {
+    paddingHorizontal: Dimensions.get('window').width*0.05,
+    paddingVertical: Dimensions.get('window').height*0.01,
+
+    
+  },
+
+  settings_button: {
+    paddingHorizontal: Dimensions.get('window').width*0.06,
+    paddingVertical: Dimensions.get('window').height*0.008,
+
+    
   },
 });

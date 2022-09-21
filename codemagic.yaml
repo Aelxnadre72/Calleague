@@ -36,6 +36,8 @@ workflows:
         recipients:
           - simensee@gmail.com
           - alexander.le@outlook.com
+          - abe@itverket.no
+          - bv@itverket.no
         notify:
           success: true
           failure: false

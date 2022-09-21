@@ -145,16 +145,16 @@ const keyboardStyle = StyleSheet.create({
         borderRadius: 12,
     },
     keyText: {
-        fontSize: 23, //PixelRatio.get()*6.1,
+        fontSize: PixelRatio.get()*6.1,
         textAlign: "center",
     },
     keyTextEnter: {
-        fontSize: 26, //PixelRatio.get()*6.1,
+        fontSize: PixelRatio.get()*7,
         textAlign: "center",
         fontWeight: "bold",
     },
     keyTextDelete: {
-        fontSize: 25, //PixelRatio.get()*6.1,
+        fontSize: PixelRatio.get()*6.5,
         textAlign: "center",
     }
 });

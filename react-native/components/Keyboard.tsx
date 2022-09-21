@@ -13,6 +13,7 @@ export const Keyboard = (props: { arg: any }) => {
     const [colorList, setcolorList] = useState([]);
     
 
+
     const KeysRowOne = () => {
         const alphabetOne = ["Q", "W", "E", "R", "T", "Y", "U", "I", "O", "P", "Å"];
         const allKeysRowOne: JSX.Element[] = [];
@@ -77,8 +78,8 @@ export const Keyboard = (props: { arg: any }) => {
     };
 
     let allGuesses = "";
+    let rows = 5;
     const Boxes = () => {
-        let rows = 5;
         let firstName = "";
         let letterCount = 0;
         const guessBoxes: JSX.Element[] = [];
@@ -92,11 +93,23 @@ export const Keyboard = (props: { arg: any }) => {
             }
 
         
-            for(let l = 0; l < 4; l++){
+            for(let l = 0; l < rows; l++){
                 const rowContent: JSX.Element[] = [];
                 for(let m = 0; m < letterCount; m++) {
                     let pos = l*letterCount + m;
-                    rowContent.push(<Text key={l + m} style={guessBoxStyle.text}>{allGuesses[pos]}</Text>);
+                    rowContent.push(<Text key={l + m} style={{
+                        flex: 1,
+                        fontSize: 25,
+                        backgroundColor: '#ffffff',
+                        marginHorizontal: '1.1%',
+                        paddingVertical: '3.5%',
+                        borderRadius: 6,
+                        width: "10%",
+                        textAlign: 'center',
+                        height: "90%",
+                        borderWidth: 3,
+                        borderColor: '#80a6ad',
+                }}>{allGuesses[pos]}</Text>);
                 }
                 guessBoxes.push(<View key={l + 'row'} style={guessBoxStyle.rows}>{rowContent}</View>);
             }
@@ -112,7 +125,7 @@ export const Keyboard = (props: { arg: any }) => {
     function checkName() {
         let resultList = [];
         let num = props.arg.name.split(" ")[0].length;
-        if(allGuesses.replace(/-/g, "").length%num == 0) {
+        if(allGuesses.replace(/-/g, "").length%num == 0 && allGuesses.replace(/-/g, "").length/num > round) {
             setRound(round + 1); //first round: round is set to 0
             
             const green = [];
@@ -165,8 +178,16 @@ export const Keyboard = (props: { arg: any }) => {
             }        
         }
         console.log(resultList);
+        console.log(round);
         }
-        if (round > 2) { // siste trykk
+
+        let sum = 0;
+        for(let w = 0; w < resultList.length; w++) {
+            if(resultList[w] != 2) {
+                sum ++;
+            }
+        }
+        if (round >= rows-1 || sum == 0) { // siste trykk
             const args = {
                 navigation: props.arg.navigation, 
                 name: props.arg.name.split(" ")[0].toUpperCase(), 
@@ -281,7 +302,7 @@ export const Keyboard = (props: { arg: any }) => {
             flex: 2,
             backgroundColor: '#f7811f',
             marginHorizontal: '1%',
-            paddingVertical: '3.5%',
+            paddingVertical: '3%',
             borderRadius: 12,
         },
         keyText: {

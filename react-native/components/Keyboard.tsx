@@ -10,6 +10,7 @@ export const Keyboard = (props: { arg: any }) => {
     const [letter, setLetter] = useState("");
     const [alertVisibility, setAlertVisibility] = useState("none");
     const [round, setRound] = useState(0);
+    const [colorList, setcolorList] = useState([]);
     
 
     const KeysRowOne = () => {
@@ -87,7 +88,7 @@ export const Keyboard = (props: { arg: any }) => {
             letterCount = firstName.length;
             allGuesses = guess;
             for(let j = 0; j < (letterCount*rows - guess.length); j++){
-                allGuesses += "_";
+                allGuesses += "-";
             }
 
         
@@ -111,7 +112,7 @@ export const Keyboard = (props: { arg: any }) => {
     function checkName() {
         let resultList = [];
         let num = props.arg.name.split(" ")[0].length;
-        if(allGuesses.replace(/_/g, "").length%num == 0) {
+        if(allGuesses.replace(/-/g, "").length%num == 0) {
             setRound(round + 1); //first round: round is set to 0
             
             const green = [];
@@ -182,7 +183,7 @@ export const Keyboard = (props: { arg: any }) => {
     function checkBackSpace() {
         let num = props.arg.name.split(" ")[0].length;
         let position = round*num;
-        if(allGuesses[position] != "_"){
+        if(allGuesses[position] != "-"){
             setLetter(""); setGuess(guess.slice(0, -1));
         }
     }
@@ -233,13 +234,23 @@ export const Keyboard = (props: { arg: any }) => {
         rows: {
             flex: 1,
             flexDirection: 'row',
-            justifyContent: 'space-between',
+            justifyContent: 'center',
             width: '100%',
-            paddingHorizontal: '10%', //should be dynamic, alternative: remove this and --
+            paddingHorizontal: '1%', //should be dynamic, alternative: remove this and --
         },
         text: {
             //marginHorizontal: '2.8%', -- and add this
+            flex: 1,
             fontSize: 25,
+            backgroundColor: '#ffffff',
+            marginHorizontal: '1.1%',
+            paddingVertical: '3.5%',
+            borderRadius: 6,
+            width: "10%",
+            textAlign: 'center',
+            height: "90%",
+            borderWidth: 3,
+            borderColor: '#80a6ad',
         }
     });
 

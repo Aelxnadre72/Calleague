@@ -33,7 +33,6 @@ function getRandomInt(max: any) {
 
 export const PlayScreen = ({ navigation }:any) => {
   
-  const [pointer, setPointer] = useState([0,0])
   let index = 0;
   const name_list = new List<String>
   const url_list = new List<String>
@@ -95,10 +94,8 @@ export const PlayScreen = ({ navigation }:any) => {
               source={{uri: url}}
             />  
       </View>
-      <Text>
-        {name}
-      </Text>
-      <Keyboard></Keyboard>
+      
+      <Keyboard name={name} ></Keyboard>
     </View>
 
   );

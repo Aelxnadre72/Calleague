@@ -1,21 +1,28 @@
 import React, { useState } from "react";
-import { StyleSheet, Text, Button, View, PixelRatio, TouchableOpacity } from "react-native";
+import { StyleSheet, Text, Button, View, PixelRatio, TouchableOpacity, Pressable, Alert } from "react-native";
 import { Employee, useFetchEmployees } from "../hooks/useFetchEmployees";
 import { RootTabScreenProps } from "../types";
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
-export const Keyboard = () => {
+export const Keyboard = (props: { name: String; }) => {
     const [guess, setGuess] = useState("");
     const [letter, setLetter] = useState("");
+    const [alertVisibility, setAlertVisibility] = useState("none");
+    const [round, setRound] = useState(0);
 
     const KeysRowOne = () => {
         const alphabetOne = ["Q", "W", "E", "R", "T", "Y", "U", "I", "O", "P", "Å"];
         const allKeysRowOne: JSX.Element[] = [];
+        let nameLength = 1;
+        if(typeof props.name != "undefined"){
+            nameLength = props.name.split(" ")[0].length;
+        }
+        let lengthLimit = (round+1)*nameLength;
 
         alphabetOne.forEach((letter) => {
             allKeysRowOne.push(
-                <TouchableOpacity key={letter} onPress={() => {setLetter(letter); setGuess(guess + letter);}} style={keyboardStyle.key}>
+                <TouchableOpacity key={letter} onPress={() => {setLetter(letter); (guess.length < lengthLimit) ? setGuess(guess + letter) : console.log('test');}} style={keyboardStyle.key}>
                 <Text style={keyboardStyle.keyText}>{letter}</Text>
                 </TouchableOpacity>
                 );
@@ -28,10 +35,15 @@ export const Keyboard = () => {
     const KeysRowTwo = () => {
         const alphabetTwo = ["A", "S", "D", "F", "G", "H", "J", "K", "L", "Ø", "Æ"];
         const allKeysRowTwo: JSX.Element[] = [];
+        let nameLength = 1;
+        if(typeof props.name != "undefined"){
+            nameLength = props.name.split(" ")[0].length;
+        }
+        let lengthLimit = (round+1)*nameLength;
 
         alphabetTwo.forEach((letter) => {
             allKeysRowTwo.push(
-                <TouchableOpacity key={letter} onPress={() => {setLetter(letter); setGuess(guess + letter);}} style={keyboardStyle.key}>
+                <TouchableOpacity key={letter} onPress={() => {setLetter(letter); (guess.length < lengthLimit) ? setGuess(guess + letter) : 0;}} style={keyboardStyle.key}>
                 <Text style={keyboardStyle.keyText}>{letter}</Text>
                 </TouchableOpacity>
                 );
@@ -44,10 +56,15 @@ export const Keyboard = () => {
     const KeysRowThree = () => {
         const alphabetThree = ["Z", "X", "C", "V", "B", "N", "M"];
         const allKeysRowThree: JSX.Element[] = [];
+        let nameLength = 1;
+        if(typeof props.name != "undefined"){
+            nameLength = props.name.split(" ")[0].length;
+        }
+        let lengthLimit = (round+1)*nameLength;
 
         alphabetThree.forEach((letter) => {
             allKeysRowThree.push(
-                <TouchableOpacity key={letter} onPress={() => {setLetter(letter); setGuess(guess + letter);}} style={keyboardStyle.key}>
+                <TouchableOpacity key={letter} onPress={() => {setLetter(letter); (guess.length < lengthLimit) ? setGuess(guess + letter) : console.log('test');}} style={keyboardStyle.key}>
                 <Text key={letter} style={keyboardStyle.keyText}>{letter}</Text>
                 </TouchableOpacity>
                 );
@@ -57,12 +74,60 @@ export const Keyboard = () => {
         return(<>{allKeysRowThree}</>);
     };
 
+    let allGuesses = "";
+    const Boxes = () => {
+        let rows = 5;
+        let firstName = "";
+        let letterCount = 0;
+        const guessBoxes: JSX.Element[] = [];
+
+        if(typeof props.name != "undefined"){
+            firstName = props.name.split(" ")[0].toUpperCase();
+            letterCount = firstName.length;
+            allGuesses = guess;
+            for(let j = 0; j < (letterCount*rows - guess.length); j++){
+                allGuesses += "_";
+            }
+
+        
+            for(let l = 0; l < 4; l++){
+                const rowContent: JSX.Element[] = [];
+                for(let m = 0; m < letterCount; m++) {
+                    let pos = l*letterCount + m;
+                    rowContent.push(<Text key={l + m} style={guessBoxStyle.text}>{allGuesses[pos]}</Text>);
+                }
+                guessBoxes.push(<View key={l + 'row'} style={guessBoxStyle.rows}>{rowContent}</View>);
+            }
+        }
+        
+        return(<>
+            <Text>{firstName}</Text>
+            <Text>{letterCount}</Text>
+            <View style={guessBoxStyle.container}>{guessBoxes}</View>
+            </>);
+    }
+
+    function checkName() {
+        let num = props.name.split(" ")[0].length;
+        if(allGuesses.replace(/_/g, "").length%num == 0) {
+            setRound(round + 1);            
+        }
+    }
+
+    function checkBackSpace() {
+        let num = props.name.split(" ")[0].length;
+        let position = round*num+1;
+        if(allGuesses[position] != "_"){ //WHY sjekk round og lettercount
+            setLetter(""); setGuess(guess.slice(0, -1));
+        }
+    }
+
     return (
         <>
         {/*guesses*/}
-        <View style={{flex: 5, backgroundColor: 'yellow'}}>
-        <Text>{guess}</Text>
-            <Text>{letter}</Text>
+        <View style={{flex: 5, backgroundColor: '#d4f2fc'}}>
+            <Text>{props.name}</Text>
+            <Boxes/>
         </View>
 
         {/*keyboard*/}
@@ -76,13 +141,13 @@ export const Keyboard = () => {
             </View>
 
             <View style={keyboardStyle.row}>
-                <TouchableOpacity style={keyboardStyle.keySpecial}>
+                <TouchableOpacity style={keyboardStyle.keySpecial} onPress={checkName}> 
                     <Text style={keyboardStyle.keyTextEnter}>⏎</Text>
                 </TouchableOpacity>
 
                 <KeysRowThree/>
                 
-                <TouchableOpacity style={keyboardStyle.keySpecial} onPress={() => {setLetter(""); setGuess(guess.slice(0, -1));}}>
+                <TouchableOpacity style={keyboardStyle.keySpecial} onPress={checkBackSpace}>
                     <Text style={keyboardStyle.keyTextDelete}>⌫</Text>
                 </TouchableOpacity>
             </View>
@@ -90,6 +155,27 @@ export const Keyboard = () => {
         </>
     );
     };
+
+    const guessBoxStyle = StyleSheet.create({
+        container: {
+            flex: 1,
+            flexDirection: 'column',
+            justifyContent: 'space-evenly',
+            alignItems: 'center',
+            width: '100%',
+        },
+        rows: {
+            flex: 1,
+            flexDirection: 'row',
+            justifyContent: 'space-between',
+            width: '100%',
+            paddingHorizontal: '10%', //should be dynamic, alternative: remove this and --
+        },
+        text: {
+            //marginHorizontal: '2.8%', -- and add this
+            fontSize: 25,
+        }
+    });
 
     const keyboardStyle = StyleSheet.create({
         container: {

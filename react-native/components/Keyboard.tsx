@@ -101,23 +101,75 @@ export const Keyboard = (props: { name: String; }) => {
         }
         
         return(<>
-            <Text>{firstName}</Text>
-            <Text>{letterCount}</Text>
+            {/*<Text>{firstName}</Text>
+            <Text>{letterCount}</Text>*/}
             <View style={guessBoxStyle.container}>{guessBoxes}</View>
             </>);
     }
 
     function checkName() {
         let num = props.name.split(" ")[0].length;
+        let resultList = [];
         if(allGuesses.replace(/_/g, "").length%num == 0) {
-            setRound(round + 1);            
+            setRound(round + 1); //first round: round is set to 0
+            
+            const green = [];
+            let roundGuess = guess.slice(-num).toUpperCase();
+            let roundName = props.name.split(" ")[0].toUpperCase();
+
+            for(let i = 0; i < num; i++) {
+                if(roundName[i] == roundGuess[i]){
+                    green.push(2);
+
+                    let a = roundGuess;
+                    let b = roundGuess;
+                    a = roundGuess.slice(0, i);
+                    b = roundGuess.slice(i+1, 100);
+
+                    let c = roundName;
+                    let d = roundName;
+                    c = roundName.slice(0, i);
+                    d = roundName.slice(i+1, 100);
+                    roundGuess = a + "!" + b;
+                    roundName = c + "?" + d;
+                }
+                else {
+                    green.push(0);
+                }
+            }
+
+            const yellow = [];
+            for(let j = 0; j < num; j++) {
+                let cc = true;
+                for(let k = 0; k < num; k++){
+                    console.log(j + " " + roundGuess[j] +" "+ k + " " + roundName[k]);
+                    if(roundGuess[j] == roundName[k] && j != k){
+                        yellow.push(1);
+                        cc = false;
+                        break;
+                    }
+                }
+                if(cc) {
+                    yellow.push(0);
+                }
+            }
+        
+        for(let s = 0; s < num; s++){
+            if(green[s] > yellow[s]) {
+                resultList.push(green[s]);
+            }
+            else {
+                resultList.push(yellow[s]);
+            }        
+        }
+        console.log(resultList);
         }
     }
 
     function checkBackSpace() {
         let num = props.name.split(" ")[0].length;
-        let position = round*num+1;
-        if(allGuesses[position] != "_"){ //WHY sjekk round og lettercount
+        let position = round*num;
+        if(allGuesses[position] != "_"){
             setLetter(""); setGuess(guess.slice(0, -1));
         }
     }
@@ -126,7 +178,7 @@ export const Keyboard = (props: { name: String; }) => {
         <>
         {/*guesses*/}
         <View style={{flex: 5, backgroundColor: '#d4f2fc'}}>
-            <Text>{props.name}</Text>
+            {/*<Text>{props.name}</Text>*/}
             <Boxes/>
         </View>
 
@@ -163,6 +215,7 @@ export const Keyboard = (props: { name: String; }) => {
             justifyContent: 'space-evenly',
             alignItems: 'center',
             width: '100%',
+            paddingTop: '7%',
         },
         rows: {
             flex: 1,

@@ -83,7 +83,7 @@ export const Keyboard = () => {
 
         <View style={keyboardStyle.row}>
             <TouchableOpacity style={keyboardStyle.keySpecial}>
-                <Text style={keyboardStyle.keyTextEnter}>↩</Text>
+                <Text style={keyboardStyle.keyTextEnter}>⏎</Text>
             </TouchableOpacity>
             <TouchableOpacity style={keyboardStyle.key}>
                 <Text style={keyboardStyle.keyText}>Q</Text>
@@ -149,8 +149,9 @@ const keyboardStyle = StyleSheet.create({
         textAlign: "center",
     },
     keyTextEnter: {
-        fontSize: 30, //PixelRatio.get()*6.1,
+        fontSize: 26, //PixelRatio.get()*6.1,
         textAlign: "center",
+        fontWeight: "bold",
     },
     keyTextDelete: {
         fontSize: 25, //PixelRatio.get()*6.1,

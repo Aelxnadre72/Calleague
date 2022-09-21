@@ -93,7 +93,7 @@ export const PlayScreen = ({ navigation }:any) => {
               source={{uri: url}}
             />  
       </View>
-      <View style={{flex: 5, backgroundColor: 'yellow'}}></View>
+      
       <Keyboard></Keyboard>
     </View>
 

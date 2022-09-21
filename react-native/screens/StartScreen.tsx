@@ -19,7 +19,7 @@ export const StartScreen = ({ navigation }: any) => {
           <TouchableOpacity
               style={styles.leaderboard_button}
               onPress= {() =>
-                navigation.navigate('Leaderboard')
+                navigation.navigate('Play')
             }
             >
               <Image

@@ -1,5 +1,5 @@
 import React from "react";
-import { StyleSheet, Text, Button, View, PixelRatio, Pressable } from "react-native";
+import { StyleSheet, Text, Button, View, PixelRatio, TouchableOpacity } from "react-native";
 import { Employee, useFetchEmployees } from "../hooks/useFetchEmployees";
 import { RootTabScreenProps } from "../types";
 import { NavigationContainer } from '@react-navigation/native';
@@ -10,105 +10,105 @@ export const Keyboard = () => {
   return (
     <View style={keyboardStyle.container}>
         <View style={keyboardStyle.row}>
-            <Pressable style={keyboardStyle.key}>
+            <TouchableOpacity style={keyboardStyle.key}>
                 <Text style={keyboardStyle.keyText}>Q</Text>
-            </Pressable>
-            <Pressable style={keyboardStyle.key}>
+            </TouchableOpacity>
+            <TouchableOpacity style={keyboardStyle.key}>
                 <Text style={keyboardStyle.keyText}>Q</Text>
-            </Pressable>
-            <Pressable style={keyboardStyle.key}>
+            </TouchableOpacity>
+            <TouchableOpacity style={keyboardStyle.key}>
                 <Text style={keyboardStyle.keyText}>Q</Text>
-            </Pressable>
-            <Pressable style={keyboardStyle.key}>
+            </TouchableOpacity>
+            <TouchableOpacity style={keyboardStyle.key}>
                 <Text style={keyboardStyle.keyText}>Q</Text>
-            </Pressable>
-            <Pressable style={keyboardStyle.key}>
+            </TouchableOpacity>
+            <TouchableOpacity style={keyboardStyle.key}>
                 <Text style={keyboardStyle.keyText}>Q</Text>
-            </Pressable>
-            <Pressable style={keyboardStyle.key}>
+            </TouchableOpacity>
+            <TouchableOpacity style={keyboardStyle.key}>
                 <Text style={keyboardStyle.keyText}>Q</Text>
-            </Pressable>
-            <Pressable style={keyboardStyle.key}>
+            </TouchableOpacity>
+            <TouchableOpacity style={keyboardStyle.key}>
                 <Text style={keyboardStyle.keyText}>Q</Text>
-            </Pressable>
-            <Pressable style={keyboardStyle.key}>
+            </TouchableOpacity>
+            <TouchableOpacity style={keyboardStyle.key}>
                 <Text style={keyboardStyle.keyText}>Q</Text>
-            </Pressable>
-            <Pressable style={keyboardStyle.key}>
+            </TouchableOpacity>
+            <TouchableOpacity style={keyboardStyle.key}>
                 <Text style={keyboardStyle.keyText}>Q</Text>
-            </Pressable>
-            <Pressable style={keyboardStyle.key}>
+            </TouchableOpacity>
+            <TouchableOpacity style={keyboardStyle.key}>
                 <Text style={keyboardStyle.keyText}>Q</Text>
-            </Pressable>
-            <Pressable style={keyboardStyle.key}>
+            </TouchableOpacity>
+            <TouchableOpacity style={keyboardStyle.key}>
                 <Text style={keyboardStyle.keyText}>Q</Text>
-            </Pressable>
-            
+            </TouchableOpacity>
         </View>
+
         <View style={keyboardStyle.row}>
-            <Pressable style={keyboardStyle.key}>
+            <TouchableOpacity style={keyboardStyle.key}>
                 <Text style={keyboardStyle.keyText}>Q</Text>
-            </Pressable>
-            <Pressable style={keyboardStyle.key}>
+            </TouchableOpacity>
+            <TouchableOpacity style={keyboardStyle.key}>
                 <Text style={keyboardStyle.keyText}>Q</Text>
-            </Pressable>
-            <Pressable style={keyboardStyle.key}>
+            </TouchableOpacity>
+            <TouchableOpacity style={keyboardStyle.key}>
                 <Text style={keyboardStyle.keyText}>Q</Text>
-            </Pressable>
-            <Pressable style={keyboardStyle.key}>
+            </TouchableOpacity>
+            <TouchableOpacity style={keyboardStyle.key}>
                 <Text style={keyboardStyle.keyText}>Q</Text>
-            </Pressable>
-            <Pressable style={keyboardStyle.key}>
+            </TouchableOpacity>
+            <TouchableOpacity style={keyboardStyle.key}>
                 <Text style={keyboardStyle.keyText}>Q</Text>
-            </Pressable>
-            <Pressable style={keyboardStyle.key}>
+            </TouchableOpacity>
+            <TouchableOpacity style={keyboardStyle.key}>
                 <Text style={keyboardStyle.keyText}>Q</Text>
-            </Pressable>
-            <Pressable style={keyboardStyle.key}>
+            </TouchableOpacity>
+            <TouchableOpacity style={keyboardStyle.key}>
                 <Text style={keyboardStyle.keyText}>Q</Text>
-            </Pressable>
-            <Pressable style={keyboardStyle.key}>
+            </TouchableOpacity>
+            <TouchableOpacity style={keyboardStyle.key}>
                 <Text style={keyboardStyle.keyText}>Q</Text>
-            </Pressable>
-            <Pressable style={keyboardStyle.key}>
+            </TouchableOpacity>
+            <TouchableOpacity style={keyboardStyle.key}>
                 <Text style={keyboardStyle.keyText}>Q</Text>
-            </Pressable>
-            <Pressable style={keyboardStyle.key}>
+            </TouchableOpacity>
+            <TouchableOpacity style={keyboardStyle.key}>
                 <Text style={keyboardStyle.keyText}>Q</Text>
-            </Pressable>
-            <Pressable style={keyboardStyle.key}>
+            </TouchableOpacity>
+            <TouchableOpacity style={keyboardStyle.key}>
                 <Text style={keyboardStyle.keyText}>Q</Text>
-            </Pressable>
-            
+            </TouchableOpacity>
         </View>
+
         <View style={keyboardStyle.row}>
-            <Pressable style={keyboardStyle.keySpecial}>
+            <TouchableOpacity style={keyboardStyle.keySpecial}>
+                <Text style={keyboardStyle.keyTextEnter}>↩</Text>
+            </TouchableOpacity>
+            <TouchableOpacity style={keyboardStyle.key}>
                 <Text style={keyboardStyle.keyText}>Q</Text>
-            </Pressable>
-            <Pressable style={keyboardStyle.key}>
+            </TouchableOpacity>
+            <TouchableOpacity style={keyboardStyle.key}>
                 <Text style={keyboardStyle.keyText}>Q</Text>
-            </Pressable>
-            <Pressable style={keyboardStyle.key}>
+            </TouchableOpacity>
+            <TouchableOpacity style={keyboardStyle.key}>
                 <Text style={keyboardStyle.keyText}>Q</Text>
-            </Pressable>
-            <Pressable style={keyboardStyle.key}>
+            </TouchableOpacity>
+            <TouchableOpacity style={keyboardStyle.key}>
                 <Text style={keyboardStyle.keyText}>Q</Text>
-            </Pressable>
-            <Pressable style={keyboardStyle.key}>
+            </TouchableOpacity>
+            <TouchableOpacity style={keyboardStyle.key}>
                 <Text style={keyboardStyle.keyText}>Q</Text>
-            </Pressable>
-            <Pressable style={keyboardStyle.key}>
+            </TouchableOpacity>
+            <TouchableOpacity style={keyboardStyle.key}>
                 <Text style={keyboardStyle.keyText}>Q</Text>
-            </Pressable>
-            <Pressable style={keyboardStyle.key}>
+            </TouchableOpacity>
+            <TouchableOpacity style={keyboardStyle.key}>
                 <Text style={keyboardStyle.keyText}>Q</Text>
-            </Pressable>
-            <Pressable style={keyboardStyle.key}>
-                <Text style={keyboardStyle.keyText}>Q</Text>
-            </Pressable>
-            <Pressable style={keyboardStyle.keySpecial}>
-                <Text style={keyboardStyle.keyText}>Q</Text>
-            </Pressable>
+            </TouchableOpacity>
+            <TouchableOpacity style={keyboardStyle.keySpecial}>
+                <Text style={keyboardStyle.keyTextDelete}>⌫</Text>
+            </TouchableOpacity>
         </View>
     </View>
   );
@@ -120,33 +120,40 @@ const keyboardStyle = StyleSheet.create({
         flexDirection: 'column',
         justifyContent: 'space-around',
         alignItems: 'center',
-        backgroundColor: 'red',
-        paddingHorizontal: '1%',
+        backgroundColor: '#dbdbdb',
     },
     row: {
         flex: 1,
         flexDirection: 'row',
         justifyContent: 'center',
         alignItems: 'center',
-        padding: '1%',
-        backgroundColor: 'red',
+        padding: '2%',
         width: '100%',
     },
     key: {
         flex: 1,
-        backgroundColor: 'green',
+        backgroundColor: '#ffffff',
         marginHorizontal: '0.5%',
-        paddingVertical: "3.5%",
-        
+        paddingVertical: '3.5%',
+        borderRadius: 6,
     },
     keySpecial: {
         flex: 2,
-        backgroundColor: 'blue',
+        backgroundColor: '#f7811f',
         marginHorizontal: '1%',
-        paddingVertical: "3.5%",
+        paddingVertical: '3.5%',
+        borderRadius: 12,
     },
     keyText: {
-        fontSize: 23, //PixelRatio.get()*6
+        fontSize: 23, //PixelRatio.get()*6.1,
+        textAlign: "center",
+    },
+    keyTextEnter: {
+        fontSize: 30, //PixelRatio.get()*6.1,
+        textAlign: "center",
+    },
+    keyTextDelete: {
+        fontSize: 25, //PixelRatio.get()*6.1,
         textAlign: "center",
     }
 });

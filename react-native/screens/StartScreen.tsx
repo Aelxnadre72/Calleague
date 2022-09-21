@@ -17,20 +17,6 @@ export const StartScreen = ({ navigation }: any) => {
     <View>
       <View style = {styles.container_header}>
           <TouchableOpacity
-              style={styles.leaderboard_button}
-              onPress= {() =>
-                navigation.navigate('Leaderboard')
-            }
-            >
-              <Image
-                style={{resizeMode:'contain',
-                        height:Dimensions.get('window').height*0.1,
-                        width: Dimensions.get('window').width*0.15}}
-                       
-                source={require('../img/leaderboard.png')}
-              />
-          </TouchableOpacity>
-          <TouchableOpacity
               style={styles.settings_button}
               onPress= {() =>
                 navigation.navigate('Info')
@@ -39,9 +25,23 @@ export const StartScreen = ({ navigation }: any) => {
               <Image
                 style={{resizeMode:'contain',
                         height:Dimensions.get('window').height*0.07,
-                        width: Dimensions.get('window').width*0.10}}
+                        width: Dimensions.get('window').width*0.11}}
                        
                 source={require('../img/info.png')}
+              />
+          </TouchableOpacity>
+          <TouchableOpacity
+              style={styles.leaderboard_button}
+              onPress= {() =>
+                navigation.navigate('Leaderboard')
+            }
+            >
+              <Image
+                style={{resizeMode:'contain',
+                        height:Dimensions.get('window').height*0.12,
+                        width: Dimensions.get('window').width*0.15}}
+                       
+                source={require('../img/leaderboard.png')}
               />
           </TouchableOpacity>
       </View>

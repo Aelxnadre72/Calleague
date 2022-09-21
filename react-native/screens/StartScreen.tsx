@@ -19,7 +19,7 @@ export const StartScreen = ({ navigation }: any) => {
           <TouchableOpacity
               style={styles.leaderboard_button}
               onPress= {() =>
-                navigation.navigate('Play')
+                navigation.navigate('Leaderboard')
             }
             >
               <Image
@@ -78,7 +78,7 @@ export const StartScreen = ({ navigation }: any) => {
         <TouchableOpacity
             style={styles.quest_button}
             onPress= {() =>
-              navigation.navigate('Play')
+              navigation.navigate('Quest')
           }
           >
             <Text style={styles.quest_button_text}>TODAY'S QUEST</Text>

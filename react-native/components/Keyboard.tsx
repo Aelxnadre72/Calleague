@@ -14,9 +14,9 @@ export const Keyboard = (props: { arg: any }) => {
     
     let rows = 4;
     let columns = 0;
-    let colorMapper: any[][] = [];
+    //let colorMapper: any[][] = [];
 
-    function kjor(){
+    {/*function kjor(){
         if(typeof props.arg.name != "undefined"){
             columns = props.arg.name.split(" ")[0].length;
         }
@@ -28,7 +28,7 @@ export const Keyboard = (props: { arg: any }) => {
             }
             colorMapper[h] = abc;
         }
-    };
+    };*/}
 
     const KeysRowOne = () => {
         const alphabetOne = ["Q", "W", "E", "R", "T", "Y", "U", "I", "O", "P", "Å"];
@@ -103,7 +103,7 @@ export const Keyboard = (props: { arg: any }) => {
             firstName = props.arg.name.split(" ")[0].toUpperCase();
             letterCount = firstName.length;
             allGuesses = guess;
-            kjor();
+            //kjor();
             for(let j = 0; j < (letterCount*rows - guess.length); j++){
                 allGuesses += "-";
             }
@@ -116,7 +116,7 @@ export const Keyboard = (props: { arg: any }) => {
                     rowContent.push(<Text key={l + m} style={{
                         flex: 1,
                         fontSize: 25,
-                        backgroundColor: colorMapper[l][m],
+                        backgroundColor: '#ffffff', //colorMapper[l][m],
                         marginHorizontal: '1.1%',
                         paddingVertical: '3.5%',
                         borderRadius: 6,
@@ -143,7 +143,7 @@ export const Keyboard = (props: { arg: any }) => {
 
     let resultList: number[] = [];
     function checkName() {
-        colorMapper[0][0] = '#GGGGGG'; //test
+        //colorMapper[0][0] = '#GGGGGG'; //test
         let num = props.arg.name.split(" ")[0].length;
         if(allGuesses.replace(/-/g, "").length%num == 0 && allGuesses.replace(/-/g, "").length/num > round) {
             setRound(round + 1); //first round: round is set to 0

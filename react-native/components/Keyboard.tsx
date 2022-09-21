@@ -10,8 +10,9 @@ export const Keyboard = (props: { arg: any }) => {
     const [letter, setLetter] = useState("");
     const [alertVisibility, setAlertVisibility] = useState("none");
     const [round, setRound] = useState(0);
+    const [result, setResult] = useState<any>();
     
-    let rows = 5;
+    let rows = 4;
     let columns = 0;
     let colorMapper: any[][] = [];
 
@@ -19,7 +20,7 @@ export const Keyboard = (props: { arg: any }) => {
         if(typeof props.arg.name != "undefined"){
             columns = props.arg.name.split(" ")[0].length;
         }
-
+        console.log()
         for(let h = 0 ; h < rows; h++) {
             let abc = [];
             for(let y = 0; y < columns; y++) {
@@ -133,13 +134,16 @@ export const Keyboard = (props: { arg: any }) => {
         return(<>
             {/*<Text>{firstName}</Text>
             <Text>{letterCount}</Text>*/}
-            <View style={guessBoxStyle.container}>{guessBoxes}</View>
+            <View style={guessBoxStyle.container}>
+                <Text>{result}</Text>
+                {guessBoxes}
+                </View>
             </>);
     }
 
+    let resultList: number[] = [];
     function checkName() {
-        colorMapper[0][0] = '#GGGGGG';
-        let resultList = [];
+        colorMapper[0][0] = '#GGGGGG'; //test
         let num = props.arg.name.split(" ")[0].length;
         if(allGuesses.replace(/-/g, "").length%num == 0 && allGuesses.replace(/-/g, "").length/num > round) {
             setRound(round + 1); //first round: round is set to 0
@@ -194,6 +198,7 @@ export const Keyboard = (props: { arg: any }) => {
             }        
         }
         console.log(resultList);
+        setResult(resultList);
         console.log(round);
         }
 

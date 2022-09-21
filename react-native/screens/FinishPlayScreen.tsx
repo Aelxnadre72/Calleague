@@ -31,8 +31,8 @@ function getRandomInt(max: any) {
 }
 
 
-export const FinishPlayScreen = ({ navigation, url, name }:any ) => {
-  
+export const FinishPlayScreen = (props:any ) => {
+  console.log( props.route.params.args.name);
     
   return (
     <View style={styles.container}>
@@ -40,7 +40,7 @@ export const FinishPlayScreen = ({ navigation, url, name }:any ) => {
             <TouchableOpacity
                 style={styles.leaderboard_button}
                 onPress= {() =>
-                    navigation.navigate('Start')
+                    props.route.params.args.navigation.navigate('Start')
                 }
                 >
                 <Image
@@ -55,7 +55,7 @@ export const FinishPlayScreen = ({ navigation, url, name }:any ) => {
             <TouchableOpacity
                 style={styles.settings_button}
                 onPress= {() =>
-                    navigation.navigate('Leaderboard')
+                    props.route.params.args.navigation.navigate('Leaderboard')
                 }
                 >
                 <Image
@@ -70,41 +70,34 @@ export const FinishPlayScreen = ({ navigation, url, name }:any ) => {
                 />
             </TouchableOpacity>
         </View>
-      <View style={{flex: 2.5, backgroundColor: '#d4f2fc', alignItems: 'center', justifyContent: 'flex.start'}}>
+      <View style={{flex: 1.5, backgroundColor: '#d4f2fc', alignItems: 'center', justifyContent: 'flex.start'}}>
         <Image
               style={{resizeMode: "contain",
                       height:Dimensions.get('window').height*0.25,
                       width: Dimensions.get('window').width*0.75,
                       }}
               
-              source={{uri:url}}
+              source={{uri:props.route.params.args.url}}
             />  
-        <Text style={{fontSize:20, alignItems: 'center', justifyContent: 'center'}}> {name} </Text>
-      </View>
+        <Text style={{fontSize:20, alignItems: 'center', justifyContent: 'center'}}> {props.route.params.args.name} </Text>
+        
+        </View>
 
       <View style={{flex: 3, backgroundColor: '#d4f2fc', alignItems: 'center', justifyContent: 'center'}}>
+        {props.route.params.args.success ? <Text style={{fontSize:40, marginTop:Dimensions.get('window').height*0.05}}> You Won! </Text>: <Text style={{fontSize:40, marginTop:Dimensions.get('window').height*0}}> You Lost! </Text> }
       <View style = {styles.container3}>
         <View style = {styles.buttonContainer}>
           <TouchableOpacity
             style={styles.play_button}
             onPress= {() =>
-              navigation.navigate('Play')
+              props.route.params.args.navigation.navigate('Start')
           }
           >
-            <Text style={styles.play_button_text}>PLAY AGAIN</Text>
+            <Text style={styles.play_button_text}>RETURN TO MENU</Text>
           </TouchableOpacity>
         </View>
       </View>
-      <View style = {styles.container4}>
-        <TouchableOpacity
-            style={styles.quest_button}
-            onPress= {() =>
-              navigation.navigate('Start')
-          }
-          >
-            <Text style={styles.quest_button_text}>RETURN</Text>
-          </TouchableOpacity>
-      </View>
+      
       </View>
       
     </View>
@@ -141,7 +134,7 @@ const styles = StyleSheet.create({
   },
   container4: {
     width: Dimensions.get('window').width * 1,
-    height: Dimensions.get('window').height * 0.4,
+    height: Dimensions.get('window').height * 0.2,
     overflow: 'hidden',
     backgroundColor:"#d4f2fc",
     alignItems: "center",
@@ -162,8 +155,8 @@ const styles = StyleSheet.create({
   },
   buttonContainer: {
     width: Dimensions.get('window').width * 0.85,
-    height: Dimensions.get('window').height * 0.10,
-    marginTop: Dimensions.get('window').height*0.22,
+    height: Dimensions.get('window').height * 0.1,
+    marginTop: Dimensions.get('window').height*0.05,
     backgroundColor:"#F68221",
     alignItems: "center",
     justifyContent: "center",
@@ -177,7 +170,7 @@ const styles = StyleSheet.create({
   },
 
   play_button_text: {
-    fontSize: 40,
+    fontSize: 30,
     fontWeight: '400',
     color: "black",
   },

@@ -5,18 +5,19 @@ import { RootTabScreenProps } from "../types";
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
-export const Keyboard = (props: { name: String; }) => {
+export const Keyboard = (props: { arg: any }) => {
     const [guess, setGuess] = useState("");
     const [letter, setLetter] = useState("");
     const [alertVisibility, setAlertVisibility] = useState("none");
     const [round, setRound] = useState(0);
+    
 
     const KeysRowOne = () => {
         const alphabetOne = ["Q", "W", "E", "R", "T", "Y", "U", "I", "O", "P", "Å"];
         const allKeysRowOne: JSX.Element[] = [];
         let nameLength = 1;
-        if(typeof props.name != "undefined"){
-            nameLength = props.name.split(" ")[0].length;
+        if(typeof props.arg.name != "undefined"){
+            nameLength = props.arg.name.split(" ")[0].length;
         }
         let lengthLimit = (round+1)*nameLength;
 
@@ -36,8 +37,8 @@ export const Keyboard = (props: { name: String; }) => {
         const alphabetTwo = ["A", "S", "D", "F", "G", "H", "J", "K", "L", "Ø", "Æ"];
         const allKeysRowTwo: JSX.Element[] = [];
         let nameLength = 1;
-        if(typeof props.name != "undefined"){
-            nameLength = props.name.split(" ")[0].length;
+        if(typeof props.arg.name != "undefined"){
+            nameLength = props.arg.name.split(" ")[0].length;
         }
         let lengthLimit = (round+1)*nameLength;
 
@@ -57,8 +58,8 @@ export const Keyboard = (props: { name: String; }) => {
         const alphabetThree = ["Z", "X", "C", "V", "B", "N", "M"];
         const allKeysRowThree: JSX.Element[] = [];
         let nameLength = 1;
-        if(typeof props.name != "undefined"){
-            nameLength = props.name.split(" ")[0].length;
+        if(typeof props.arg.name != "undefined"){
+            nameLength = props.arg.name.split(" ")[0].length;
         }
         let lengthLimit = (round+1)*nameLength;
 
@@ -81,8 +82,8 @@ export const Keyboard = (props: { name: String; }) => {
         let letterCount = 0;
         const guessBoxes: JSX.Element[] = [];
 
-        if(typeof props.name != "undefined"){
-            firstName = props.name.split(" ")[0].toUpperCase();
+        if(typeof props.arg.name != "undefined"){
+            firstName = props.arg.name.split(" ")[0].toUpperCase();
             letterCount = firstName.length;
             allGuesses = guess;
             for(let j = 0; j < (letterCount*rows - guess.length); j++){
@@ -108,14 +109,26 @@ export const Keyboard = (props: { name: String; }) => {
     }
 
     function checkName() {
-        let num = props.name.split(" ")[0].length;
+        let num = props.arg.name.split(" ")[0].length;
         if(allGuesses.replace(/_/g, "").length%num == 0) {
             setRound(round + 1);            
+        }
+        if (round > 2) { // siste trykk
+            const args = {
+                navigation: props.arg.navigation, 
+                name: props.arg.name.split(" ")[0].toUpperCase(), 
+                url: props.arg.url, 
+                success: props.arg.name.split(" ")[0].toUpperCase() == guess.slice(-num)
+            }
+            
+            console.log(args.success);
+            props.arg.navigation.navigate('FinishPlay', {args: args})
+            
         }
     }
 
     function checkBackSpace() {
-        let num = props.name.split(" ")[0].length;
+        let num = props.arg.name.split(" ")[0].length;
         let position = round*num+1;
         if(allGuesses[position] != "_"){ //WHY sjekk round og lettercount
             setLetter(""); setGuess(guess.slice(0, -1));
@@ -126,7 +139,7 @@ export const Keyboard = (props: { name: String; }) => {
         <>
         {/*guesses*/}
         <View style={{flex: 5, backgroundColor: '#d4f2fc'}}>
-            <Text>{props.name}</Text>
+            <Text>{props.arg.name}</Text>
             <Boxes/>
         </View>
 

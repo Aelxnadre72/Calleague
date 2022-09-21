@@ -16,7 +16,6 @@ export const PlayScreen = ({ navigation }:any) => {
     <View style={playScreenStyle.container}>
       <View style={{flex: 1, backgroundColor: 'blue'}}></View>
       <View style={{flex: 3, backgroundColor: 'green'}}></View>
-      <View style={{flex: 5, backgroundColor: 'yellow'}}></View>
       <Keyboard></Keyboard>
     </View>
 

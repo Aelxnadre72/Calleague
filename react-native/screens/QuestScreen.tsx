@@ -49,7 +49,7 @@ export const QuestScreen = ({ navigation }:any) => {
   const url = url_list.get(index);
   return (
     <View style={styles.container}>
-      <View style={{flex: 1, backgroundColor: 'blue', alignItems: 'center', justifyContent: 'space-between', flexDirection: 'row'}}>
+      <View style={{flex: 1.7, backgroundColor: '#3BC8EF', alignItems: 'center', justifyContent: 'space-between', flexDirection: 'row'}}>
             <TouchableOpacity
                 style={styles.leaderboard_button}
                 onPress= {() =>
@@ -58,45 +58,46 @@ export const QuestScreen = ({ navigation }:any) => {
                 >
                 <Image
                     style={{resizeMode:'contain',
-                            height:Dimensions.get('window').height*0.15,
-                            width: Dimensions.get('window').width*0.15,
-                            marginTop: Dimensions.get('window').height*0.02}}
+                            height:Dimensions.get('window').height*0.09,
+                            width: Dimensions.get('window').width*0.12,
+                            }}
                         
-                    source={require('../img/leaderboard.png')}
+                    source={require('../img/home.png')}
                 />
             </TouchableOpacity>
             <TouchableOpacity
                 style={styles.settings_button}
                 onPress= {() =>
-                    navigation.navigate('Play')
+                    navigation.navigate('Leaderboard')
                 }
                 >
                 <Image
                     style={{resizeMode:'contain',
                             height:Dimensions.get('window').height*0.1,
-                            width: Dimensions.get('window').width*0.13,
-                            marginTop: Dimensions.get('window').height*0.01}}
+                            width: Dimensions.get('window').width*0.15,
+                            marginTop:Dimensions.get('window').height*0.02
+                          }}
 
                         
-                    source={require('../img/settings.png')}
+                    source={require('../img/leaderboard.png')}
                 />
             </TouchableOpacity>
       
       </View>
-      <View style={{flex: 3, backgroundColor: 'green'}}>
+      <View style={{flex: 3, backgroundColor: '#3BC8EF',  alignItems: 'center', justifyContent: 'center'}}>
           <Image
             style={{resizeMode: "contain",
                     height:Dimensions.get('window').height*0.25,
-                    width: Dimensions.get('window').width*0.75}}
+                    width: Dimensions.get('window').width*1}}
                     
-            source={{uri: url}}
+                    source={{uri: url}}
           />
           <Text>
             {name}
           </Text>
       </View>
       
-      <View style={{flex: 5, backgroundColor: 'yellow'}}></View>
+      
       <Keyboard></Keyboard>
     </View>
          

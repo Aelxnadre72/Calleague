@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { StyleSheet, Text, Image, View, TouchableOpacity, Dimensions } from "react-native";
+import React, { Component, useState } from "react";
+import { StyleSheet, Text, Image, View, TouchableOpacity, Dimensions, Button } from "react-native";
 import { Employee, useFetchEmployees } from "../hooks/useFetchEmployees";
 import { RootTabScreenProps } from "../types";
 import { NavigationContainer } from '@react-navigation/native';
@@ -38,17 +38,23 @@ export const PlayScreen = ({ navigation }:any) => {
   const url_list = new List<String>
   const employeeResult = useFetchEmployees();
   employeeResult.employees?.map((employee) => {
-      name_list.add(employee.name);
+      const name_str = employee.name.replace("é", "e").replace("É", "E").replace("ä", "a").replace("-", " ");
+      name_list.add(name_str);
       url_list.add(employee.image);
   })
   index = getRandomInt(name_list.size());
   const name = name_list.get(index);
   // change box size and make grid 
-
+  
   const url = url_list.get(index);
+  const arg = {
+    name: name,
+    navigation: navigation,
+    url: url
+  }
   return (
     <View style={styles.container}>
-      <View style={{flex: 1, backgroundColor: 'blue', alignItems: 'center', justifyContent: 'space-between', flexDirection: 'row'}}>
+      <View style={{flex: 1.4, backgroundColor: '#d4f2fc', alignItems: 'center', justifyContent: 'space-between', flexDirection: 'row'}}>
             <TouchableOpacity
                 style={styles.leaderboard_button}
                 onPress= {() =>
@@ -57,47 +63,50 @@ export const PlayScreen = ({ navigation }:any) => {
                 >
                 <Image
                     style={{resizeMode:'contain',
-                            height:Dimensions.get('window').height*0.1,
-                            width: Dimensions.get('window').width*0.15,
-                            marginTop: Dimensions.get('window').height*0.04}}
-                          
+                            height:Dimensions.get('window').height*0.08,
+                            width: Dimensions.get('window').width*0.13,
+                            marginTop:Dimensions.get('window').height*0.01}}
+                    source={require('../img/home.png')}
                         
-                    source={require('../img/leaderboard.png')}
-                />
+                /> 
             </TouchableOpacity>
             <TouchableOpacity
                 style={styles.settings_button}
                 onPress= {() =>
-                    navigation.navigate('Start')
+                    navigation.navigate('Leaderboard')
                 }
                 >
                 <Image
                     style={{resizeMode:'contain',
-                            height:Dimensions.get('window').height*0.08,
-                            width: Dimensions.get('window').width*0.13,
-                            marginTop: Dimensions.get('window').height*0.01}}
+                            height:Dimensions.get('window').height*0.12,
+                            width: Dimensions.get('window').width*0.16,
+                            marginTop:Dimensions.get('window').height*0.02}}
+                            
 
                         
-                    source={require('../img/home.png')}
+                    source={require('../img/leaderboard.png')}
                 />
             </TouchableOpacity>
         </View>
 
-      <View style={{flex: 3, backgroundColor: 'green', alignItems: 'center', justifyContent: 'center'}}>
+      <View style={{flex: 3, backgroundColor: '#d4f2fc', alignItems: 'center', justifyContent: 'center'}}>
         <Image
               style={{resizeMode: "contain",
                       height:Dimensions.get('window').height*0.25,
-                      width: Dimensions.get('window').width*0.75}}
-                      
+                      width: Dimensions.get('window').width*0.75,
+                      }}
+              
               source={{uri: url}}
             />  
       </View>
-      
-      <Keyboard name={name} ></Keyboard>
+        
+      <Keyboard arg={arg}></Keyboard>
     </View>
 
   );
 };
+export default PlayScreen;
+
 
 const styles = StyleSheet.create({
   container: {
@@ -119,4 +128,3 @@ const styles = StyleSheet.create({
   },
 });
 
-export default PlayScreen;

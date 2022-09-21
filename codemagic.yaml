@@ -3,7 +3,7 @@ workflows:
     name: React Native Android
     working_directory: react-native
     max_build_duration: 120
-    instance_type: mac_mini
+    instance_type: mac_mini_m1
     environment:
       groups:
         - keystore_credentials
@@ -36,6 +36,8 @@ workflows:
         recipients:
           - simensee@gmail.com
           - alexander.le@outlook.com
+          - abe@itverket.no
+          - bv@itverket.no
         notify:
           success: true
           failure: false

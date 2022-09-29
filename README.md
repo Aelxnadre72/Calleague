@@ -1,11 +1,8 @@
-# itDAGENE 2022 mobil app case
+# Calleague
 
-Choose which technology you want to use: [React-Native](https://reactnative.dev) with [Expo](https://expo.dev), or [Flutter](https://flutter.dev).
+The name of my app is not mispelled. It's a word play on colleague that incorporates the purpose of the app: to know what to call your colleagues.
+
 
 ## React Native with Expo
 
-Skeleton app for react native, along with README for setup, can be found in folder [react-native](react-native).
-
-## Flutter
-
-Skeleton app for Flutter, along with README for setup, can be found in folder [flutter](flutter).
+Created with React Native and Expo

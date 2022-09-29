@@ -34,10 +34,7 @@ workflows:
     publishing:
       email:
         recipients:
-          - simensee@gmail.com
           - alexander.le@outlook.com
-          - abe@itverket.no
-          - bv@itverket.no
         notify:
           success: true
           failure: false
@@ -74,8 +71,7 @@ workflows:
     publishing:
       email:
         recipients:
-          - abe@itverket.no
-          - bv@itverket.no
+          - alexander.le@outlook.com
         notify:
           success: true
           failure: false

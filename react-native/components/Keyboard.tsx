@@ -9,9 +9,11 @@ export const Keyboard = (props: { arg: any }) => {
     const [guess, setGuess] = useState("");
     const [letter, setLetter] = useState("");
     const [alertVisibility, setAlertVisibility] = useState("none");
-    const [round, setRound] = useState(0);
     const [result, setResult] = useState<any>();
+    const [round, setRound] = useState<number>(0);
     
+    
+    console.log("firstRound: " + round);
     let rows = 4;
     let columns = 0;
     //let colorMapper: any[][] = [];
@@ -145,8 +147,12 @@ export const Keyboard = (props: { arg: any }) => {
     function checkName() {
         //colorMapper[0][0] = '#GGGGGG'; //test
         let num = props.arg.name.split(" ")[0].length;
+        console.log("RoundVariable before checkName: " + round);
         if(allGuesses.replace(/-/g, "").length%num == 0 && allGuesses.replace(/-/g, "").length/num > round) {
-            setRound(round + 1); //first round: round is set to 0
+            console.log("gotChecked");
+            console.log("RoundIsNotUpped: " + round);
+            setRound(round+1); //first round: round is set to 0
+            console.log("RoundIsUpped: " + round);
             
             const green = [];
             let roundGuess = guess.slice(-num).toUpperCase();
@@ -156,17 +162,8 @@ export const Keyboard = (props: { arg: any }) => {
                 if(roundName[i] == roundGuess[i]){
                     green.push(2);
 
-                    let a = roundGuess;
-                    let b = roundGuess;
-                    a = roundGuess.slice(0, i);
-                    b = roundGuess.slice(i+1, 100);
-
-                    let c = roundName;
-                    let d = roundName;
-                    c = roundName.slice(0, i);
-                    d = roundName.slice(i+1, 100);
-                    roundGuess = a + "!" + b;
-                    roundName = c + "?" + d;
+                    roundGuess = roundGuess.slice(0, i) + "!" + roundGuess.slice(i+1, 100);
+                    roundName = roundName.slice(0, i) + "?" + roundName.slice(i+1, 100);
                 }
                 else {
                     green.push(0);
@@ -202,13 +199,19 @@ export const Keyboard = (props: { arg: any }) => {
         console.log(round);
         }
 
-        let sum = 0;
-        for(let w = 0; w < resultList.length; w++) {
-            if(resultList[w] != 2) {
-                sum ++;
-            }
-        }
-        if (round >= rows-1 || sum == 0) { // siste trykk
+
+        let score = resultList.reduce((a, b) => a + b, 0) 
+        let winScore = (props.arg.name.split(" ")[0].length)*2;
+        console.log("Score: " + score);
+        console.log("WinScore: " + winScore);
+        console.log("Round: " + round);
+        console.log("Rows-2: " + (rows-2));
+
+        let stringLength = rows*(props.arg.name.split(" ")[0].length);
+        let guessedLength = allGuesses.replace(/-/g, "").length;
+
+        if (guessedLength === stringLength || score === winScore) { // siste trykk
+            console.log("gotCheckedOut");
             const args = {
                 navigation: props.arg.navigation, 
                 name: props.arg.name.split(" ")[0].toUpperCase(), 

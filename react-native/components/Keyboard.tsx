@@ -117,7 +117,7 @@ export const Keyboard = (props: { arg: any }) => {
                     let pos = l*letterCount + m;
                     rowContent.push(<Text key={l + m} style={{
                         flex: 1,
-                        fontSize: 25,
+                        fontSize: PixelRatio.get()*7,
                         backgroundColor: '#ffffff', //colorMapper[l][m],
                         marginHorizontal: '1.1%',
                         paddingVertical: '3.5%',

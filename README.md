@@ -7,7 +7,14 @@ The name of my app is not mispelled. It's a word play on colleague that incorpor
 
 Created with React Native and Expo
 
+## requirements
+
+Git
+Node.js
+Expo CLI
+Yarn
+Expo Go app (ios/android)
 
 ## Run the app
 
-Run "npx expo start" from /react-native. Scan the qr code with the expo go app on ios or android. The phone and the computer has to be on the same wifi network.
+Run "yarn add expo" from /react-native. Then run "npx expo start" from /react-native. Scan the qr code with the expo go app on ios or android. The phone and the computer has to be on the same wifi network.
